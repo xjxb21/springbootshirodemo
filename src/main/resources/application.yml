@@ -1,0 +1,17 @@
+#สýพÝิด
+druid:
+  type: com.alibaba.druid.pool.DruidDataSource
+  orderDBMaster:
+      url: jdbc:mysql://localhost:3306/master?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+      initial-size: 5
+      min-idle: 1
+      max-active: 5
+      test-on-borrow: true
+spring:
+  thymeleaf:
+    mode: HTML5
+    cache: false
+xiao: dkkkk
