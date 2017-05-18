@@ -8,6 +8,7 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
@@ -71,12 +72,16 @@ public class ShiroConfig {
         return jdbcRealm;
     }
 
+
+
     @Bean
     @Autowired
-    public DefaultWebSecurityManager getSecurityManager(Realm realm) {
+    public DefaultWebSecurityManager getSecurityManager(Realm realm, DefaultWebSessionManager sessionManager) {
         logger.debug(">>>>Shiro init SecurityManager.");
         DefaultWebSecurityManager webSecurityManager = new DefaultWebSecurityManager();
         webSecurityManager.setRealm(realm);
+        //session共享
+        webSecurityManager.setSessionManager(sessionManager);
         return webSecurityManager;
     }
 
